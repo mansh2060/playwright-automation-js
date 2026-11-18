@@ -1,4 +1,5 @@
 import { loginPage } from './loginpage.js';
+import { fillAgencyDetails } from './agencydetails.js';
 
 
 export async function registerpage(page) {
@@ -6,8 +7,8 @@ export async function registerpage(page) {
   await page.locator('id=_r_0_-form-item').fill('Manish')
   await page.locator('text=Last Name').click();
   await page.locator('text=Last Name').fill('Kumar')
-  await page.locator('text=Email Address').fill('heroicmanish017@gmail.com')
-  await page.locator('[id = "_r_4_-form-item"]').fill('9860059813')
+  await page.locator('text=Email Address').fill('bellmark031@gmail.com')
+  await page.locator('[id = "_r_4_-form-item"]').fill('9860059809')
   await page.locator('input[type="password"]').nth(0).fill('Man_1234');
   await page.locator('input[type="password"]').nth(1).fill('Man_1234');
   //await page.pause()
@@ -45,6 +46,7 @@ if (await verifyCode.isVisible().catch(() => false)) {
   console.log('OTP screen displayed. Enter OTP manually.');
 
   await page.pause();
+  
 
   // Verify that OTP verification succeeded and Agency Details appeared.
   await page.getByPlaceholder('Enter Agency Name').waitFor({
@@ -52,6 +54,7 @@ if (await verifyCode.isVisible().catch(() => false)) {
     timeout: 30000
   });
 
+  
   await fillAgencyDetails(page);
   }
 } 
